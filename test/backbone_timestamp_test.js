@@ -59,4 +59,19 @@ describe('Backbone.Timestamp', function() {
       expect(book.get('updatedAt')).equal(currentDate);
     });
   });
+
+  describe('Options', function() {
+    it('allows to change names of attributes', function() {
+      var Car = Backbone.Model.extend({});
+      Backbone.Timestamp(Car, { updatedAt: 'updated', createdAt: 'created_at' });
+
+      var car = new Car({ name: 'bmw x1' });
+      car.save();
+
+      expect(car.get('name')).equal('bmw x1');
+      expect(_.keys(car.attributes)).length(3);
+      expect(car.get('created_at')).equal(currentDate);
+      expect(car.get('updated')).equal(currentDate);
+    });
+  });
 });
