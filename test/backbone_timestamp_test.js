@@ -11,33 +11,27 @@ describe('Backbone.Timestamp', function() {
 
   Backbone.Timestamp(Book);
 
-  var Library = Backbone.Collection.extend({
-    model: Book,
-    url: 'api/library'
-  });
-
+  // Test stubs
   var currentDate = (new Date()).toJSON();
-  sinon.stub(Date.prototype, 'toJSON').returns(currentDate);
-  sinon.stub(Backbone, 'sync');
+  Date.prototype.toJSON = function() { return currentDate; };
+  Backbone.sync = function() {};
 
   describe('on save model', function() {
+    var createdAt = '2013-03-07T08:54:31.170Z'
+      , updatedAt = '2013-03-07T10:05:45.260Z';
+
     it('sets createdAt and updatedAt automatically', function() {
-      var book      = new Book()
-        , updatedAt = '2013-03-07T10:05:45.260Z';
+      var book = new Book();
 
       book.save({ title: 'War and Peace', updatedAt: updatedAt });
-
       expect(book.get('title')).equal('War and Peace');
       expect(book.get('author')).equal('unknown');
-
       expect(book.get('createdAt')).equal(currentDate);
       expect(book.get('updatedAt')).equal(updatedAt);
     });
 
     it('updates only not changed attributes', function() {
-      var createdAt = '2013-03-07T08:54:31.170Z'
-        , updatedAt = '2013-03-07T10:05:45.260Z'
-        , book      = new Book({ id: 1, content: 'Romeo & Juliet', createdAt: createdAt });
+      var book = new Book({ id: 1, content: 'Romeo & Juliet', createdAt: createdAt });
 
       book.save();
       expect(book.get('createdAt')).equal(createdAt);
@@ -50,6 +44,11 @@ describe('Backbone.Timestamp', function() {
   });
 
   describe('on create model to collection', function() {
+    var Library = Backbone.Collection.extend({
+      model: Book,
+      url: 'api/library'
+    });
+
     it('sets necessary attributes', function() {
       var library   = new Library()
         , createdAt = '2013-03-07T08:54:31.170Z'
@@ -60,7 +59,7 @@ describe('Backbone.Timestamp', function() {
     });
   });
 
-  describe('Options', function() {
+  describe('options', function() {
     it('allows to change names of attributes', function() {
       var Car = Backbone.Model.extend({});
       Backbone.Timestamp(Car, { updatedAt: 'updated', createdAt: 'created_at' });
@@ -69,7 +68,7 @@ describe('Backbone.Timestamp', function() {
       car.save();
 
       expect(car.get('name')).equal('bmw x1');
-      expect(_.keys(car.attributes)).length(3);
+      expect(Object.keys(car.attributes)).length(3);
       expect(car.get('created_at')).equal(currentDate);
       expect(car.get('updated')).equal(currentDate);
     });

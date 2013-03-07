@@ -7,7 +7,6 @@
     "vendor/underscore.js",
     "vendor/backbone.js",
     "vendor/chai.js",
-    "vendor/sinon.min.js",
     "backbone.timestamp.js",
     "test/**/*.js"
   ]
