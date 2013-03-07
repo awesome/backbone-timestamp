@@ -16,8 +16,8 @@ describe('Backbone.Timestamp', function() {
     url: 'api/library'
   });
 
-  var currentDate = new Date();
-  sinon.stub(window, 'Date').returns(currentDate);
+  var currentDate = (new Date()).toJSON();
+  sinon.stub(Date.prototype, 'toJSON').returns(currentDate);
   sinon.stub(Backbone, 'sync');
 
   describe('on save model', function() {
