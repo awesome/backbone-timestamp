@@ -1,18 +1,17 @@
 {
-  "name": "backbone.timestamp",
+  "name": "backbone-timestamp",
   "version": "0.1.0",
   "description": "...",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Ask11/backbone.timestamp.git"
+    "url": "git://github.com/Ask11/backbone-timestamp.git"
   },
   "keywords": [],
   "author": "Aleksey Kulikov",
   "license": "MIT",
   "readmeFilename": "README.md",
   "scripts": {
-    "build": "./node_modules/grunt/bin/grunt",
-    "stat": "cloc backbone.timestamp.js && cloc test/ --by-file",
+    "stat": "cloc backbone-timestamp.js && cloc test/ --by-file",
     "test": "./node_modules/testem/testem.js ci"
   },
   "devDependencies": {
