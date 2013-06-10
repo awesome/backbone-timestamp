@@ -1,7 +1,7 @@
 {
   "name": "backbone-timestamp",
-  "version": "0.1.1",
-  "description": "Plugin for Backbone.Model to generate timestamps attributes",
+  "version": "0.1.2",
+  "description": "Backbone.Model plugin to generate timestamps attributes",
   "author": "Aleksey Kulikov",
   "main": "index.js",
   "repository": {

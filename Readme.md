@@ -6,7 +6,7 @@
 
 ## Installation
 
-    $ bower install backbone-timestamp
+    $ bower install backbone-timestamp --save
 
 ## Licence
 
