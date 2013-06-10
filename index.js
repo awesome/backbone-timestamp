@@ -1,8 +1,5 @@
 // Plugin for Backbone.Model to generate timestamps attributes
 // https://github.com/ask11/backbone-timestamp
-//
-// (c) 2013, Aleksey Kulikov
-// May be freely distributed according to MIT license.
 
 ;(function(Backbone, _) {
   'use strict';
