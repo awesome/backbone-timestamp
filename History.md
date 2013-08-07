@@ -1,3 +1,8 @@
+### 0.1.3 / 2013-08-07
+
+  * add docs
+  * update deps
+
 ### 0.1.2 / 2013-06-10
 
   * added travis notifications
