@@ -1,12 +1,12 @@
 {
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install",
-    "test": "./node_modules/testem/testem.js ci",
-    "start": "./node_modules/testem/testem.js",
+    "postinstall": "bower install",
+    "test": "testem -f test/testem.json ci",
+    "start": "testem -f test/testem.json",
     "stat": "cloc index.js --quiet && cloc test/ --quiet"
   },
   "devDependencies": {
-    "testem": "~0.2.98",
-    "bower": "~0.9.2"
+    "testem": "~0.3.x",
+    "bower": "~1.0.x"
   }
 }
